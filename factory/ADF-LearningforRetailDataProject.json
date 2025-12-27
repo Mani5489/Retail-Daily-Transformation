@@ -1,0 +1,9 @@
+{
+	"name": "ADF-LearningforRetailDataProject",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "e86cc006-f549-4119-a7de-b826ea02b52c",
+		"tenantId": "ad170666-d76e-4be6-8859-1e0381fa12d5"
+	}
+}
