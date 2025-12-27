@@ -1,0 +1,12 @@
+{
+	"name": "AzureDataLakeStorageForSales",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://retailsalesdataformani.dfs.core.windows.net/",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDVGMkRGQUEzLTZDNUMtNEUxMi1BRUYxLUI3RTFGMjk1MzE0MV9kYzJmOTA4YS1hZTRhLTRlMjQtOTY3Yy0wMjg2OWQ2M2YwMmQiDQp9"
+		}
+	}
+}

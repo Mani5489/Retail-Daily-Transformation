@@ -1,0 +1,65 @@
+{
+	"name": "transformData",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "sourceData",
+						"type": "DatasetReference"
+					},
+					"name": "TransformSource1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "targetDataWithPipleline",
+						"type": "DatasetReference"
+					},
+					"name": "outPutSink"
+				}
+			],
+			"transformations": [
+				{
+					"name": "aggregateData"
+				},
+				{
+					"name": "window1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          sale_id as short,",
+				"          sale_date as date,",
+				"          store_id as string,",
+				"          product_id as string,",
+				"          category as string,",
+				"          quantity as short,",
+				"          unit_price as short",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> TransformSource1",
+				"TransformSource1 aggregate(groupBy(store_id,",
+				"          category),",
+				"     totalQuantity = sum(quantity),",
+				"          totalRevenue = sum(quantity*unit_price),",
+				"          avgUnitPrice = avg(unit_price)) ~> aggregateData",
+				"aggregateData window(over(store_id,",
+				"          category),",
+				"     desc(totalRevenue, true),",
+				"     revenueRank = rank()) ~> window1",
+				"window1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     filePattern:'outputWithPipleLine',",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> outPutSink"
+			]
+		}
+	}
+}
