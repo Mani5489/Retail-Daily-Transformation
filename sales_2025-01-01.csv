@@ -1,0 +1,6 @@
+sale_id,sale_date,store_id,product_id,category,quantity,unit_price
+1,01-01-2025,S1,P101,Electronics,2,1500
+2,01-01-2025,S1,P102,Electronics,1,3000
+3,01-01-2025,S2,P201,Furniture,1,7000
+4,01-01-2025,S2,P202,Furniture,2,4500
+5,01-01-2025,S3,P301,Accessories,5,500
